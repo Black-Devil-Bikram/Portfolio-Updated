@@ -1,4 +1,6 @@
 <?php
+header("Content-Type: application/json");
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collect and sanitize input data
     $name = htmlspecialchars(trim($_POST['name']));
