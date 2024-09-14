@@ -14,7 +14,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <script src="script.js"></script>
-
+    <script type="text/javascript">
+         (function(){
+            emailjs.init("YdexCnhoktDkrxSBd"); // Replace 'YOUR_USER_ID' with the user ID from your EmailJS dashboard
+        })();
+    </script>
 </head>
 
 <body>
@@ -253,25 +257,12 @@
                     </div>
                     <div class="column right">
                         <div class="text">Message me</div>
-                        <form id="contact-form" method="POST" action="send_email.php" >
-                            <div class="fields">
-                                <div class="field name">
-                                    <input type="text" name="name" placeholder="Your Name" required>
-                                </div>
-                                <div class="field email">
-                                    <input type="email" name="email" placeholder="Your Email" required>
-                                </div>
-                            </div>
-                            <div class="field subject">
-                                <input type="text" name="subject" placeholder="Subject" required>
-                            </div>
-                            <div class="field textarea">
-                                <textarea name="message" cols="30" rows="10" placeholder="Message..." required></textarea>
-                            </div>
-                            <div class="button">
-                                <button type="submit">Send Message</button>
-                            </div>
-                        </form>
+                        <form id="contact-form">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                        <button type="submit">Send</button>
+                    </form>
                     </div>
     </section>
 
