@@ -70,26 +70,27 @@ $(document).ready(function() {
             }
         }
     });
-});
-document.addEventListener('DOMContentLoaded', function () {
-    const contactForm = document.getElementById('contact-form');
+     // Form submission handling
+     $('#contact-form').submit(function(event) {
+        event.preventDefault(); // Prevent the default form submit action
+        
+        // Get form values
+        var formData = {
+            from_name: $('#name').val(),
+            from_email: $('#email').val(),
+            message: $('#message').val()
+        };
 
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
-
-        // Basic form validation
-        const nameInput = contactForm.elements['name'];
-        const emailInput = contactForm.elements['email'];
-        const messageInput = contactForm.elements['message'];
-
-        if (nameInput.value.trim() === '' || emailInput.value.trim() === '' || messageInput.value.trim() === '') {
-            alert('Please fill in all fields.');
-            return;
-        }
-
-        // Assuming a real form submission here, but you can customize this
-        // For demonstration purposes, just alert a success message
-        alert('Form submitted successfully!');
-        contactForm.reset(); // Clear the form fields
+        // Send email using EmailJS
+        emailjs.send('service_7i1hwvg', 'template_mptn8ub', formData)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            alert('Your message has been sent successfully!');
+            $('#contact-form')[0].reset(); // Reset the form after successful submission
+        }, function(error) {
+            console.log('FAILED...', error);
+            alert('There was an error sending your message. Please try again later.');
+        });
     });
+
 });
